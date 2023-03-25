@@ -1,0 +1,12 @@
+---
+- yum: name=policycoreutils-python state=installed
+  when: ansible_os_family == "RedHat" and ansible_distribution_major_version|int <= 7
+- yum: name=policycoreutils-python-utils state=installed
+  when: ansible_os_family == "RedHat" and ansible_distribution_major_version|int >= 8
+- shell: semanage port -a -t syslogd_port_t -p udp {{ syslog_udp_port }}
+  when: ansible_os_family == "RedHat"
+  ignore_errors: true
+
+- template: src=udpclient dest=/etc/rsyslog.d/{{ item }}.conf owner=root group=root mode=0644
+  with_items: "{{ syslog_server }}"
+- service: name=rsyslog state=restarted

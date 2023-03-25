@@ -1,0 +1,14 @@
+---
+- yum: name=policycoreutils-python state=installed
+  when: ansible_os_family == "RedHat" and ansible_distribution_major_version|int <= 7
+- yum: name=policycoreutils-python-utils state=installed
+  when: ansible_os_family == "RedHat" and ansible_distribution_major_version|int >= 8
+- shell: semanage port -a -t syslogd_port_t -p udp {{ syslog_udp_port }}
+  when: ansible_os_family == "RedHat"
+  ignore_errors: true
+
+- template: src=udpserver dest=/etc/rsyslog.d/udpserver.conf owner=root group=root mode=0644
+- firewalld: port={{ syslog_udp_port }}/udp permanent=true state=enabled
+  when: ansible_os_family == "RedHat"
+  notify: reload_firewalld
+- service: name=rsyslog state=restarted

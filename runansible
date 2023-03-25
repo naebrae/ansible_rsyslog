@@ -1,0 +1,8 @@
+#!/bin/bash
+
+if [ "x$1" == "x" ]
+then
+  echo "Usage $0 site.yml"
+else
+  ANSIBLE_HOST_KEY_CHECKING=false ansible-playbook -i .vagrant/provisioners/ansible/inventory/vagrant_ansible_inventory $1
+fi

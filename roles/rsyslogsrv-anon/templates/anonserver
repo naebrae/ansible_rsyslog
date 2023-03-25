@@ -1,0 +1,21 @@
+$DefaultNetstreamDriver gtls
+{% if ansible_os_family == "RedHat" %}
+$DefaultNetstreamDriverCAFile /etc/pki/tls/certs/LocalLabCA.crt
+$DefaultNetstreamDriverCertFile /etc/pki/tls/certs/{{ ansible_fqdn | regex_replace('\\.', '_') }}.crt
+$DefaultNetstreamDriverKeyFile /etc/pki/tls/private/{{ ansible_fqdn | regex_replace('\\.', '_') }}.key
+{% endif %}
+{% if ansible_os_family == "Debian" %}
+$DefaultNetstreamDriverCAFile /etc/ssl/certs/LocalLabCA.crt
+$DefaultNetstreamDriverCertFile /etc/ssl/certs/{{ ansible_fqdn | regex_replace('\\.', '_') }}.crt
+$DefaultNetstreamDriverKeyFile /etc/ssl/private/{{ ansible_fqdn | regex_replace('\\.', '_') }}.key
+{% endif %}
+
+$ModLoad imtcp
+
+$InputTCPServerStreamDriverMode 1
+$InputTCPServerStreamDriverAuthMode anon
+$InputTCPServerRun {{ syslog_tcp_port }}
+
+$Template remote-incoming-logs, "/var/log/remote/%HOSTNAME%.log"
+if ($fromhost-ip != "127.0.0.1" ) then ?remote-incoming-logs
+&stop

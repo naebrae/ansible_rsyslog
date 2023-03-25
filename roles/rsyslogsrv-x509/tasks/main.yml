@@ -1,0 +1,22 @@
+---
+- yum: name=rsyslog-gnutls state=installed
+  when: ansible_os_family == "RedHat"
+- apt: name=rsyslog-gnutls state=present
+  when: ansible_os_family == "Debian"
+
+- yum: name=policycoreutils-python state=installed
+  when: ansible_os_family == "RedHat" and ansible_distribution_major_version|int <= 7
+- yum: name=policycoreutils-python-utils state=installed
+  when: ansible_os_family == "RedHat" and ansible_distribution_major_version|int >= 8
+- shell: semanage port -a -t syslogd_port_t -p tcp {{ syslog_tcp_port }}
+  when: ansible_os_family == "RedHat" and ansible_distribution_major_version|int == 6
+  ignore_errors: true
+- shell: semanage port -a -t syslog_tls_port_t -p tcp {{ syslog_tcp_port }}
+  when: ansible_os_family == "RedHat" and ansible_distribution_major_version|int >= 7
+  ignore_errors: true
+
+- template: src=x509server dest=/etc/rsyslog.d/x509server.conf owner=root group=root mode=0644
+- firewalld: port={{ syslog_tcp_port }}/tcp permanent=true state=enabled
+  when: ansible_os_family == "RedHat"
+  notify: reload_firewalld
+- service: name=rsyslog state=restarted

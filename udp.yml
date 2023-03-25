@@ -1,0 +1,13 @@
+---
+- hosts: logsrv
+  gather_facts: true
+  become: true
+  roles:
+  - common-handlers
+  - rsyslogsrv-udp
+  
+- hosts: logcli
+  gather_facts: true
+  become: true
+  roles:
+  - rsyslogcli-udp

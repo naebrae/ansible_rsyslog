@@ -1,0 +1,38 @@
+---
+- hosts: logsrv
+  gather_facts: true
+  become: true
+  pre_tasks:
+  - block:
+    - apt_repository:
+        repo: ppa:adiscon/v8-stable
+    - apt: name=rsyslog state=present
+    when: ansible_distribution == 'Ubuntu'
+  roles:
+  - common-handlers
+  - { role: mkcert, cert_san: "DNS:log.lab.local" }
+  - rsyslogsrv-x509
+  post_tasks:
+  - block:
+    - file: path=/etc/rsyslog.d/private state=directory owner=syslog group=root mode=0700
+    - shell: cp /etc/ssl/private/*.key /etc/rsyslog.d/private/
+    - shell: chown -R syslog /etc/rsyslog.d/private
+    - shell: sed -i '/DriverKeyFile/s/ssl/rsyslog.d/' /etc/rsyslog.d/*.conf
+    - service: name=rsyslog state=restarted
+    when: ansible_distribution == 'Ubuntu'
+
+- hosts: logcli
+  gather_facts: true
+  user: vagrant
+  become: true
+  roles:
+  - mkcert
+  - rsyslogcli-x509
+  post_tasks:
+  - block:
+    - file: path=/etc/rsyslog.d/private state=directory owner=syslog group=root mode=0700
+    - shell: cp /etc/ssl/private/*.key /etc/rsyslog.d/private/
+    - shell: chown -R syslog /etc/rsyslog.d/private
+    - shell: sed -i '/DriverKeyFile/s/ssl/rsyslog.d/' /etc/rsyslog.d/*.conf
+    - service: name=rsyslog state=restarted
+    when: ansible_distribution == 'Ubuntu'

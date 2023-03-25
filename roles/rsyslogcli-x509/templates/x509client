@@ -1,0 +1,29 @@
+$DefaultNetstreamDriver gtls
+{% if ansible_os_family == "RedHat" %}
+$DefaultNetstreamDriverCAFile /etc/pki/tls/certs/LocalLabCA.crt
+$DefaultNetstreamDriverCertFile /etc/pki/tls/certs/{{ ansible_fqdn | regex_replace('\\.', '_') }}.crt
+$DefaultNetstreamDriverKeyFile /etc/pki/tls/private/{{ ansible_fqdn | regex_replace('\\.', '_') }}.key
+{% endif %}
+{% if ansible_os_family == "Debian" %}
+$DefaultNetstreamDriverCAFile /etc/ssl/certs/LocalLabCA.crt
+$DefaultNetstreamDriverCertFile /etc/ssl/certs/{{ ansible_fqdn | regex_replace('\\.', '_') }}.crt
+$DefaultNetstreamDriverKeyFile /etc/ssl/private/{{ ansible_fqdn | regex_replace('\\.', '_') }}.key
+{% endif %}
+
+$ActionSendStreamDriverMode 1
+$ActionSendStreamDriverAuthMode x509/name
+$ActionSendStreamDriverPermittedPeer {{ item }}
+
+{% if ansible_os_family == "RedHat" %}
+$WorkDirectory /var/lib/rsyslog
+{% endif %}
+{% if ansible_os_family == "Debian" %}
+$Workdirectory /var/spool/rsyslog
+{% endif %}
+$ActionQueueType LinkedList
+$ActionQueueFileName {{ item }}
+$ActionQueueMaxDiskSpace 1g
+$ActionResumeRetryCount -1
+$ActionQueueSaveOnShutdown on
+
+*.* @@{{ item }}:{{ syslog_tcp_port }}

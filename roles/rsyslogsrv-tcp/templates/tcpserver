@@ -1,0 +1,9 @@
+$ModLoad imtcp
+{% if client_address is defined %}
+$AllowedSender TCP, {{ client_address }}
+{% endif %}
+$InputTCPServerRun {{ syslog_tcp_port }}
+
+$Template remote-incoming-logs, "/var/log/remote/%HOSTNAME%.log"
+if ($fromhost-ip != "127.0.0.1" ) then ?remote-incoming-logs
+&stop

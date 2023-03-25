@@ -1,0 +1,8 @@
+---
+galaxy_info:
+  role_name: rsyslogsrv_x509
+  author: Andrew Milne
+  description: Configure rsyslog to receive logs as X509 TLS server.
+  license: license (GPLv2)
+
+  min_ansible_version: 2.8

@@ -1,0 +1,5 @@
+--- 
+- name: reload_firewalld
+  command: firewall-cmd --reload
+  when: ansible_os_family == "RedHat"
+  ignore_errors: true

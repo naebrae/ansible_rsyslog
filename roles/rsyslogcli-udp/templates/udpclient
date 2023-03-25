@@ -1,0 +1,2 @@
+# Single @ for UDP, double for TCP
+*.* @{{ item }}:{{ syslog_udp_port }}

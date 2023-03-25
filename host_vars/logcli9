@@ -1,0 +1,2 @@
+---
+syslog_server: [ logsrv9.lab.local,logsrv11.lab.local ]
