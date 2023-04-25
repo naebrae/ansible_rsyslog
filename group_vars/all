@@ -1,8 +1,8 @@
 ---
-host_domain: lab.local
-cert_org: "/C=AU/ST=Western Australia/L=Perth/O=Lab Local/"
+host_domain: lab.home
+cert_org: "/C=AU/ST=Western Australia/L=Perth/O=Home/"
 
-syslog_server: log.lab.local
+syslog_server: log.lab.home
 syslog_tcp_port: 6514
 syslog_udp_port: 514
 client_address: 172.16.0.0/12, *.{{ host_domain }}

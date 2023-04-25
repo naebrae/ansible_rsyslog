@@ -12,8 +12,8 @@ Vagrant.configure(2) do |config|
       logsrv7_vb.name = "logsrv7"
     end
     logsrv7_config.vm.provision "shell", inline: <<-SHELL
-      echo "172.16.1.207	logsrv7.lab.local	logsrv7	log.lab.local" >> /etc/hosts
-      echo "172.16.1.107	logcli7.lab.local	logcli7" >> /etc/hosts
+      echo "172.16.1.207	logsrv7.lab.home	logsrv7	log.lab.home" >> /etc/hosts
+      echo "172.16.1.107	logcli7.lab.home	logcli7" >> /etc/hosts
     SHELL
   end
 
@@ -25,12 +25,12 @@ Vagrant.configure(2) do |config|
       logcli7_vb.name = "logcli7"
     end
     logcli7_config.vm.provision "shell", inline: <<-SHELL
-      echo "172.16.1.107	logcli7.lab.local	logcli7" >> /etc/hosts
-      echo "172.16.1.207	logsrv7.lab.local	logsrv7	log.lab.local" >> /etc/hosts
-      echo "172.16.1.208	logsrv8.lab.local	logsrv8" >> /etc/hosts
-      echo "172.16.1.209	logsrv9.lab.local	logsrv9" >> /etc/hosts
-      echo "172.16.1.211	logsrv11.lab.local	logsrv11" >> /etc/hosts
-      echo "172.16.1.222	logsrv22.lab.local	logsrv22" >> /etc/hosts
+      echo "172.16.1.107	logcli7.lab.home	logcli7" >> /etc/hosts
+      echo "172.16.1.207	logsrv7.lab.home	logsrv7	log.lab.home" >> /etc/hosts
+      echo "172.16.1.208	logsrv8.lab.home	logsrv8" >> /etc/hosts
+      echo "172.16.1.209	logsrv9.lab.home	logsrv9" >> /etc/hosts
+      echo "172.16.1.211	logsrv11.lab.home	logsrv11" >> /etc/hosts
+      echo "172.16.1.222	logsrv22.lab.home	logsrv22" >> /etc/hosts
     SHELL
   end
 
@@ -42,8 +42,8 @@ Vagrant.configure(2) do |config|
       logsrv8_vb.name = "logsrv8"
     end
     logsrv8_config.vm.provision "shell", inline: <<-SHELL
-      echo "172.16.1.208	logsrv8.lab.local	logsrv8	log.lab.local" >> /etc/hosts
-      echo "172.16.1.108	logcli8.lab.local	logcli8" >> /etc/hosts
+      echo "172.16.1.208	logsrv8.lab.home	logsrv8	log.lab.home" >> /etc/hosts
+      echo "172.16.1.108	logcli8.lab.home	logcli8" >> /etc/hosts
     SHELL
   end
 
@@ -55,12 +55,12 @@ Vagrant.configure(2) do |config|
       logcli8_vb.name = "logcli8"
     end
     logcli8_config.vm.provision "shell", inline: <<-SHELL
-      echo "172.16.1.108	logcli8.lab.local	logcli8" >> /etc/hosts
-      echo "172.16.1.208	logsrv8.lab.local	logsrv8	log.lab.local" >> /etc/hosts
-      echo "172.16.1.207	logsrv7.lab.local	logsrv7" >> /etc/hosts
-      echo "172.16.1.209	logsrv9.lab.local	logsrv9" >> /etc/hosts
-      echo "172.16.1.211	logsrv11.lab.local	logsrv11" >> /etc/hosts
-      echo "172.16.1.222	logsrv22.lab.local	logsrv22" >> /etc/hosts
+      echo "172.16.1.108	logcli8.lab.home	logcli8" >> /etc/hosts
+      echo "172.16.1.208	logsrv8.lab.home	logsrv8	log.lab.home" >> /etc/hosts
+      echo "172.16.1.207	logsrv7.lab.home	logsrv7" >> /etc/hosts
+      echo "172.16.1.209	logsrv9.lab.home	logsrv9" >> /etc/hosts
+      echo "172.16.1.211	logsrv11.lab.home	logsrv11" >> /etc/hosts
+      echo "172.16.1.222	logsrv22.lab.home	logsrv22" >> /etc/hosts
     SHELL
   end
 
@@ -72,8 +72,8 @@ Vagrant.configure(2) do |config|
       logsrv9_vb.name = "logsrv9"
     end
     logsrv9_config.vm.provision "shell", inline: <<-SHELL
-      echo "172.16.1.209	logsrv9.lab.local	logsrv9	log.lab.local" >> /etc/hosts
-      echo "172.16.1.109	logcli9.lab.local	logcli9" >> /etc/hosts
+      echo "172.16.1.209	logsrv9.lab.home	logsrv9	log.lab.home" >> /etc/hosts
+      echo "172.16.1.109	logcli9.lab.home	logcli9" >> /etc/hosts
     SHELL
   end
 
@@ -85,12 +85,12 @@ Vagrant.configure(2) do |config|
       logcli9_vb.name = "logcli9"
     end
     logcli9_config.vm.provision "shell", inline: <<-SHELL
-      echo "172.16.1.109	logcli9.lab.local	logcli9" >> /etc/hosts
-      echo "172.16.1.209	logsrv9.lab.local	logsrv9	log.lab.local" >> /etc/hosts
-      echo "172.16.1.207	logsrv7.lab.local	logsrv7" >> /etc/hosts
-      echo "172.16.1.208	logsrv8.lab.local	logsrv8" >> /etc/hosts
-      echo "172.16.1.211	logsrv11.lab.local	logsrv11" >> /etc/hosts
-      echo "172.16.1.222	logsrv22.lab.local	logsrv22" >> /etc/hosts
+      echo "172.16.1.109	logcli9.lab.home	logcli9" >> /etc/hosts
+      echo "172.16.1.209	logsrv9.lab.home	logsrv9	log.lab.home" >> /etc/hosts
+      echo "172.16.1.207	logsrv7.lab.home	logsrv7" >> /etc/hosts
+      echo "172.16.1.208	logsrv8.lab.home	logsrv8" >> /etc/hosts
+      echo "172.16.1.211	logsrv11.lab.home	logsrv11" >> /etc/hosts
+      echo "172.16.1.222	logsrv22.lab.home	logsrv22" >> /etc/hosts
     SHELL
   end
 
@@ -102,8 +102,8 @@ Vagrant.configure(2) do |config|
       logsrv11_vb.name = "logsrv11"
     end
     logsrv11_config.vm.provision "shell", inline: <<-SHELL
-      echo "172.16.1.211	logsrv11.lab.local	logsrv11	log.lab.local" >> /etc/hosts
-      echo "172.16.1.111	logcli11.lab.local	logcli11" >> /etc/hosts
+      echo "172.16.1.211	logsrv11.lab.home	logsrv11	log.lab.home" >> /etc/hosts
+      echo "172.16.1.111	logcli11.lab.home	logcli11" >> /etc/hosts
     SHELL
   end
 
@@ -115,12 +115,12 @@ Vagrant.configure(2) do |config|
       logcli11_vb.name = "logcli11"
     end
     logcli11_config.vm.provision "shell", inline: <<-SHELL
-      echo "172.16.1.111	logcli11.lab.local	logcli11" >> /etc/hosts
-      echo "172.16.1.211	logsrv11.lab.local	logsrv11	log.lab.local" >> /etc/hosts
-      echo "172.16.1.207	logsrv7.lab.local	logsrv7" >> /etc/hosts
-      echo "172.16.1.208	logsrv8.lab.local	logsrv8" >> /etc/hosts
-      echo "172.16.1.209	logsrv9.lab.local	logsrv9" >> /etc/hosts
-      echo "172.16.1.222	logsrv22.lab.local	logsrv22" >> /etc/hosts
+      echo "172.16.1.111	logcli11.lab.home	logcli11" >> /etc/hosts
+      echo "172.16.1.211	logsrv11.lab.home	logsrv11	log.lab.home" >> /etc/hosts
+      echo "172.16.1.207	logsrv7.lab.home	logsrv7" >> /etc/hosts
+      echo "172.16.1.208	logsrv8.lab.home	logsrv8" >> /etc/hosts
+      echo "172.16.1.209	logsrv9.lab.home	logsrv9" >> /etc/hosts
+      echo "172.16.1.222	logsrv22.lab.home	logsrv22" >> /etc/hosts
     SHELL
   end
 
@@ -132,8 +132,8 @@ Vagrant.configure(2) do |config|
       logsrv20_vb.name = "logsrv20"
     end
     logsrv20_config.vm.provision "shell", inline: <<-SHELL
-      echo "172.16.1.220	logsrv20.lab.local	logsrv20	log.lab.local" >> /etc/hosts
-      echo "172.16.1.120	logcli20.lab.local	logcli20" >> /etc/hosts
+      echo "172.16.1.220	logsrv20.lab.home	logsrv20	log.lab.home" >> /etc/hosts
+      echo "172.16.1.120	logcli20.lab.home	logcli20" >> /etc/hosts
     SHELL
   end
 
@@ -145,12 +145,12 @@ Vagrant.configure(2) do |config|
       logcli20_vb.name = "logcli20"
     end
     logcli20_config.vm.provision "shell", inline: <<-SHELL
-      echo "172.16.1.120	logcli20.lab.local	logcli20" >> /etc/hosts
-      echo "172.16.1.220	logsrv20.lab.local	logsrv20	log.lab.local" >> /etc/hosts
-      echo "172.16.1.207	logsrv7.lab.local	logsrv7" >> /etc/hosts
-      echo "172.16.1.208	logsrv8.lab.local	logsrv8" >> /etc/hosts
-      echo "172.16.1.209	logsrv9.lab.local	logsrv9" >> /etc/hosts
-      echo "172.16.1.211	logsrv11.lab.local	logsrv11" >> /etc/hosts
+      echo "172.16.1.120	logcli20.lab.home	logcli20" >> /etc/hosts
+      echo "172.16.1.220	logsrv20.lab.home	logsrv20	log.lab.home" >> /etc/hosts
+      echo "172.16.1.207	logsrv7.lab.home	logsrv7" >> /etc/hosts
+      echo "172.16.1.208	logsrv8.lab.home	logsrv8" >> /etc/hosts
+      echo "172.16.1.209	logsrv9.lab.home	logsrv9" >> /etc/hosts
+      echo "172.16.1.211	logsrv11.lab.home	logsrv11" >> /etc/hosts
     SHELL
   end
 
@@ -162,8 +162,8 @@ Vagrant.configure(2) do |config|
       logsrv22_vb.name = "logsrv22"
     end
     logsrv22_config.vm.provision "shell", inline: <<-SHELL
-      echo "172.16.1.222	logsrv22.lab.local	logsrv22	log.lab.local" >> /etc/hosts
-      echo "172.16.1.122	logcli22.lab.local	logcli22" >> /etc/hosts
+      echo "172.16.1.222	logsrv22.lab.home	logsrv22	log.lab.home" >> /etc/hosts
+      echo "172.16.1.122	logcli22.lab.home	logcli22" >> /etc/hosts
     SHELL
   end
 
@@ -175,12 +175,12 @@ Vagrant.configure(2) do |config|
       logcli22_vb.name = "logcli22"
     end
     logcli22_config.vm.provision "shell", inline: <<-SHELL
-      echo "172.16.1.122	logcli22.lab.local	logcli22" >> /etc/hosts
-      echo "172.16.1.222	logsrv22.lab.local	logsrv22	log.lab.local" >> /etc/hosts
-      echo "172.16.1.207	logsrv7.lab.local	logsrv7" >> /etc/hosts
-      echo "172.16.1.208	logsrv8.lab.local	logsrv8" >> /etc/hosts
-      echo "172.16.1.209	logsrv9.lab.local	logsrv9" >> /etc/hosts
-      echo "172.16.1.211	logsrv11.lab.local	logsrv11" >> /etc/hosts
+      echo "172.16.1.122	logcli22.lab.home	logcli22" >> /etc/hosts
+      echo "172.16.1.222	logsrv22.lab.home	logsrv22	log.lab.home" >> /etc/hosts
+      echo "172.16.1.207	logsrv7.lab.home	logsrv7" >> /etc/hosts
+      echo "172.16.1.208	logsrv8.lab.home	logsrv8" >> /etc/hosts
+      echo "172.16.1.209	logsrv9.lab.home	logsrv9" >> /etc/hosts
+      echo "172.16.1.211	logsrv11.lab.home	logsrv11" >> /etc/hosts
     SHELL
   end
 

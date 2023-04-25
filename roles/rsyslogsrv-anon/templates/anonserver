@@ -1,11 +1,11 @@
 $DefaultNetstreamDriver gtls
 {% if ansible_os_family == "RedHat" %}
-$DefaultNetstreamDriverCAFile /etc/pki/tls/certs/LocalLabCA.crt
+$DefaultNetstreamDriverCAFile /etc/pki/tls/certs/HomeLabCA.crt
 $DefaultNetstreamDriverCertFile /etc/pki/tls/certs/{{ ansible_fqdn | regex_replace('\\.', '_') }}.crt
 $DefaultNetstreamDriverKeyFile /etc/pki/tls/private/{{ ansible_fqdn | regex_replace('\\.', '_') }}.key
 {% endif %}
 {% if ansible_os_family == "Debian" %}
-$DefaultNetstreamDriverCAFile /etc/ssl/certs/LocalLabCA.crt
+$DefaultNetstreamDriverCAFile /etc/ssl/certs/HomeLabCA.crt
 $DefaultNetstreamDriverCertFile /etc/ssl/certs/{{ ansible_fqdn | regex_replace('\\.', '_') }}.crt
 $DefaultNetstreamDriverKeyFile /etc/ssl/private/{{ ansible_fqdn | regex_replace('\\.', '_') }}.key
 {% endif %}

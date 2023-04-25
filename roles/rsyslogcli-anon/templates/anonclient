@@ -1,9 +1,9 @@
 $DefaultNetstreamDriver gtls
 {% if ansible_os_family == "RedHat" %}
-$DefaultNetstreamDriverCAFile /etc/pki/tls/certs/LocalLabRoot.crt
+$DefaultNetstreamDriverCAFile /etc/pki/tls/certs/HomeLabRoot.crt
 {% endif %}
 {% if ansible_os_family == "Debian" %}
-$DefaultNetstreamDriverCAFile /etc/ssl/certs/LocalLabRoot.crt
+$DefaultNetstreamDriverCAFile /etc/ssl/certs/HomeLabRoot.crt
 {% endif %}
 
 $ActionSendStreamDriverMode 1

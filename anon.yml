@@ -25,9 +25,9 @@
   gather_facts: true
   become: true
   pre_tasks:
-  - copy: src={{ lookup('env','HOME') }}/cacerts/LocalLabRoot.crt dest=/etc/pki/tls/certs/ owner=root group=root mode=0644
+  - copy: src={{ lookup('env','HOME') }}/cacerts/HomeLabRoot.crt dest=/etc/pki/tls/certs/ owner=root group=root mode=0644
     when: ansible_os_family == "RedHat"
-  - copy: src={{ lookup('env','HOME') }}/cacerts/LocalLabRoot.crt dest=/etc/ssl/certs/ owner=root group=root mode=0644
+  - copy: src={{ lookup('env','HOME') }}/cacerts/HomeLabRoot.crt dest=/etc/ssl/certs/ owner=root group=root mode=0644
     when: ansible_os_family == "Debian"
   roles:
   - rsyslogcli-anon

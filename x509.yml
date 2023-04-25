@@ -10,7 +10,7 @@
     when: ansible_distribution == 'Ubuntu'
   roles:
   - common-handlers
-  - { role: mkcert, cert_san: "DNS:log.lab.local" }
+  - { role: mkcert, cert_san: "DNS:log.lab.home" }
   - rsyslogsrv-x509
   post_tasks:
   - block:

@@ -1,2 +1,2 @@
 ---
-syslog_server: [ logsrv9.lab.local,logsrv11.lab.local ]
+syslog_server: [ logsrv9.lab.home,logsrv11.lab.home ]

@@ -3,7 +3,7 @@
   gather_facts: true
   become: true
   vars:
-    - host_domain: "lab.local"
+    - host_domain: "lab.home"
   tasks:
   - hostname: name={{ inventory_hostname | lower }}.{{ host_domain | lower }}
   - file: src=/usr/share/zoneinfo/Australia/Perth dest=/etc/localtime state=link force=yes
